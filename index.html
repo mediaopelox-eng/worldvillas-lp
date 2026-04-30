@@ -61,9 +61,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <ul class="navbar-nav align-items-lg-center gap-1">
         <li class="nav-item"><a class="nav-link active" href="#home">Home</a></li>
         <li class="nav-item"><a class="nav-link" href="#about">About World Villas</a></li>
+        <li class="nav-item"><a class="nav-link" href="#pricing">Pricing</a></li>
         <li class="nav-item"><a class="nav-link" href="#map">Location</a></li>
+        <li class="nav-item"><a class="nav-link" href="#club-10">Club 10</a></li>
         <li class="nav-item"><a class="nav-link" href="#properties">Amenities</a></li>
-        <li class="nav-item"><a class="nav-link" href="#map">FAQ's</a></li>
+        <li class="nav-item"><a class="nav-link" href="#faq">FAQ's</a></li>
         <li class="nav-item"><a class="nav-link" data-bs-toggle="modal" data-bs-target="#leadModal">Book a Private Visit</a></li>
       </ul>
     </div>
@@ -301,7 +303,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="lbl">Acres Gated Community</div>
       </div>
       <div class="col-6 col-md-3 stat-item fade-up" style="animation-delay:.1s">
-        <div class="num" data-target="500">0</div>
+        <div class="num" data-target="400">0</div>
         <div class="lbl">Luxury Villas</div>
       </div>
       <div class="col-6 col-md-3 stat-item fade-up" style="animation-delay:.2s">
@@ -696,7 +698,7 @@ const countObserver = new IntersectionObserver(entries => {
     if (!e.isIntersecting || e.target.dataset.counted) return;
     e.target.dataset.counted = '1';
     const target = +e.target.dataset.target;
-    const suffix = target >= 1000 ? '+' : '+';
+    const suffix = target >= 1000 ? '' : '';
     let start = 0;
     const step = target / 60;
     const interval = setInterval(() => {
@@ -733,6 +735,31 @@ window.addEventListener("load", function () {
 
 document.getElementById("modalPhone").addEventListener("input", function () {
   this.value = this.value.replace(/\D/g, "").slice(0, 10);
+});
+</script>
+<script>
+const sections = document.querySelectorAll("section[id]");
+const navLinks = document.querySelectorAll(".nav-link");
+
+window.addEventListener("scroll", () => {
+  let current = "";
+
+  sections.forEach((section) => {
+    const sectionTop = section.offsetTop - 120; // offset for navbar
+    const sectionHeight = section.offsetHeight;
+
+    if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+      current = section.getAttribute("id");
+    }
+  });
+
+  navLinks.forEach((link) => {
+    link.classList.remove("active");
+
+    if (link.getAttribute("href") === "#" + current) {
+      link.classList.add("active");
+    }
+  });
 });
 </script>
 </body>

@@ -879,5 +879,51 @@ document.querySelectorAll('#navMain .nav-link').forEach(function (link) {
 </script>
 <!-- Chatbot -->
 <script src="https://oto.direct/embed-widget.js" data-chatbot-slug="arihant-worldvillas" data-widget-type="floating" data-button-color="#C8A96A" data-button-size="large" data-variant="icon" async></script>
+<script>
+async function sendLeadToCRM(form) {
+  const name = form.querySelector('[name="name"]').value;
+  const email = form.querySelector('[name="email"]').value;
+  const phone = form.querySelector('[name="phone"]').value;
+  try {
+    await fetch(
+      "https://farvisioncloud.com/sfasync/api/syncleads/externalapi",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          firstName: name,
+          lastName: "",
+          email: email,
+          mobilePhone: phone,
+          comments: "",
+          originFrom: "Lead from Digital",
+          product: "Arihant World Villas",
+          campaign: "WV_Srch_BrandCam_6_5_26",
+          sourceAccountDescription: "Opelox",
+          sourceAccountType: "Agency",
+          isUpdatefromUIDate: false,
+          isImported: true,
+          DumpdataObjectId: "91241085t62268889600867",
+          tenantId: 868
+        })
+      }
+    );
+    console.log("Lead Sent To CRM");
+  }
+  catch(error) {
+    console.error("CRM Error:", error);
+  }
+}
+/* AUTO APPLY TO ALL WEB3FORMS */
+document
+.querySelectorAll('form[action="https://api.web3forms.com/submit"]')
+.forEach(form => {
+  form.addEventListener("submit", function(){
+    sendLeadToCRM(form);
+  });
+});
+</script>
 </body>
 </html>

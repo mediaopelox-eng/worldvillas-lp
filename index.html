@@ -725,74 +725,74 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
 <script>
-/* ── Property data ─────────────────────────────────────────── */
-const properties = [
-  { img:'image/am-1.webp', beds:4, baths:2, sqft:950, title:'Majesta Expansive Banquets', price:'$533,367', type:'Majesta Expansive Banquets' },
-  { img:'image/am-6.webp', beds:6, baths:4, sqft:1400, title:'5 Star Luxury Hotel', price:'$533,367', type:'5 Star Luxury Hotel' },
-  { img:'image/am-3.webp', beds:5, baths:3, sqft:1200, title:'IPL Size Cricket Ground', price:'$533,367', type:'IPL Size Cricket Ground' },
-  { img:'image/am-2.webp', beds:3, baths:2, sqft:820, title:'Beach Pool', price:'$533,367', type:'Beach Pool' },
-  { img:'image/am-4.webp', beds:3, baths:2, sqft:780, title:'Open Air Cinema', price:'$533,367', type:'Open Air Cinema' },
-  { img:'image/am-5.webp', beds:4, baths:3, sqft:1050, title:'White Waters', price:'$533,367', type:'White Waters' },
-  { img:'image/am-7.webp', beds:3, baths:2, sqft:820, title:'6 Acre Mango Tree Woodland', price:'$533,367', type:'6 Acre Mango Tree Woodland' },
-  { img:'image/am-8.webp', beds:3, baths:2, sqft:780, title:'Golf Putting Greens', price:'$533,367', type:'Golf Putting Greens' },
-  { img:'image/am-9.webp', beds:4, baths:3, sqft:1050, title:'Bubbler’s Park', price:'$533,367', type:'Bubbler’s Park' },
-];
+  /* ── Property data ─────────────────────────────────────────── */
+  const properties = [
+    { img:'image/am-1.webp', beds:4, baths:2, sqft:950, title:'Majesta Expansive Banquets', price:'$533,367', type:'Majesta Expansive Banquets' },
+    { img:'image/am-6.webp', beds:6, baths:4, sqft:1400, title:'5 Star Luxury Hotel', price:'$533,367', type:'5 Star Luxury Hotel' },
+    { img:'image/am-3.webp', beds:5, baths:3, sqft:1200, title:'IPL Size Cricket Ground', price:'$533,367', type:'IPL Size Cricket Ground' },
+    { img:'image/am-2.webp', beds:3, baths:2, sqft:820, title:'Beach Pool', price:'$533,367', type:'Beach Pool' },
+    { img:'image/am-4.webp', beds:3, baths:2, sqft:780, title:'Open Air Cinema', price:'$533,367', type:'Open Air Cinema' },
+    { img:'image/am-5.webp', beds:4, baths:3, sqft:1050, title:'White Waters', price:'$533,367', type:'White Waters' },
+    { img:'image/am-7.webp', beds:3, baths:2, sqft:820, title:'6 Acre Mango Tree Woodland', price:'$533,367', type:'6 Acre Mango Tree Woodland' },
+    { img:'image/am-8.webp', beds:3, baths:2, sqft:780, title:'Golf Putting Greens', price:'$533,367', type:'Golf Putting Greens' },
+    { img:'image/am-9.webp', beds:4, baths:3, sqft:1050, title:'Bubbler’s Park', price:'$533,367', type:'Bubbler’s Park' },
+  ];
 
-const propGrid = document.getElementById('propGrid');
-properties.forEach((p, i) => {
-  const col = document.createElement('div');
-  col.className = 'col-md-6 col-lg-4 fade-up';
-  col.style.animationDelay = (i * 0.08) + 's';
-  col.innerHTML = `
-    <div class="prop-card h-100">
-      <div class="position-relative overflow-hidden">
-        <img src="${p.img}" alt="${p.title}">
-        <span class="badge-type">${p.type}</span>
-      </div>
-    </div>`;
-  propGrid.appendChild(col);
-});
-
-/* ── Testimonial data ──────────────────────────────────────── */
-const testimonials = [
-  { img:'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&q=80', name:'Marcus Reid', role:'Home Buyer', text:'An excellent real estate platform with verified listings and complete transparency. The team guided us professionally from start to finish, making the entire buying process smooth and stress-free.' },
-  { img:'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&q=80', name:'Priya Mehta', role:'Property Investor', text:'EstatePrime helped me find my ideal investment property within weeks. The data, listings, and support team are top-notch. Highly recommend for anyone serious about real estate.' },
-  { img:'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=200&q=80', name:'Samantha Reeves', role:'First-time Buyer', text:'I was nervous about buying my first home, but EstatePrime made it incredibly straightforward. Their transparent process and expert advisors gave me complete confidence throughout.' },
-];
-
-
-
-/* ── Scroll fade-in ────────────────────────────────────────── */
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
-}, { threshold: 0.12 });
-document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
-
-/* ── Counter animation ─────────────────────────────────────── */
-const countObserver = new IntersectionObserver(entries => {
-  entries.forEach(e => {
-    if (!e.isIntersecting || e.target.dataset.counted) return;
-    e.target.dataset.counted = '1';
-    const target = +e.target.dataset.target;
-    const suffix = target >= 1000 ? '' : '';
-    let start = 0;
-    const step = target / 60;
-    const interval = setInterval(() => {
-      start = Math.min(start + step, target);
-      e.target.textContent = Math.floor(start).toLocaleString() + suffix;
-      if (start >= target) clearInterval(interval);
-    }, 16);
+  const propGrid = document.getElementById('propGrid');
+  properties.forEach((p, i) => {
+    const col = document.createElement('div');
+    col.className = 'col-md-6 col-lg-4 fade-up';
+    col.style.animationDelay = (i * 0.08) + 's';
+    col.innerHTML = `
+      <div class="prop-card h-100">
+        <div class="position-relative overflow-hidden">
+          <img src="${p.img}" alt="${p.title}">
+          <span class="badge-type">${p.type}</span>
+        </div>
+      </div>`;
+    propGrid.appendChild(col);
   });
-}, { threshold: 0.5 });
-document.querySelectorAll('.stat-item .num').forEach(el => countObserver.observe(el));
 
-/* ── Filter chips toggle ────────────────────────────────────── */
-document.querySelectorAll('.filter-chips .chip').forEach(chip => {
-  chip.addEventListener('click', function() {
-    document.querySelectorAll('.filter-chips .chip').forEach(c => c.classList.remove('active'));
-    this.classList.add('active');
+  /* ── Testimonial data ──────────────────────────────────────── */
+  const testimonials = [
+    { img:'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&q=80', name:'Marcus Reid', role:'Home Buyer', text:'An excellent real estate platform with verified listings and complete transparency. The team guided us professionally from start to finish, making the entire buying process smooth and stress-free.' },
+    { img:'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&q=80', name:'Priya Mehta', role:'Property Investor', text:'EstatePrime helped me find my ideal investment property within weeks. The data, listings, and support team are top-notch. Highly recommend for anyone serious about real estate.' },
+    { img:'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=200&q=80', name:'Samantha Reeves', role:'First-time Buyer', text:'I was nervous about buying my first home, but EstatePrime made it incredibly straightforward. Their transparent process and expert advisors gave me complete confidence throughout.' },
+  ];
+
+
+
+  /* ── Scroll fade-in ────────────────────────────────────────── */
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+  /* ── Counter animation ─────────────────────────────────────── */
+  const countObserver = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (!e.isIntersecting || e.target.dataset.counted) return;
+      e.target.dataset.counted = '1';
+      const target = +e.target.dataset.target;
+      const suffix = target >= 1000 ? '' : '';
+      let start = 0;
+      const step = target / 60;
+      const interval = setInterval(() => {
+        start = Math.min(start + step, target);
+        e.target.textContent = Math.floor(start).toLocaleString() + suffix;
+        if (start >= target) clearInterval(interval);
+      }, 16);
+    });
+  }, { threshold: 0.5 });
+  document.querySelectorAll('.stat-item .num').forEach(el => countObserver.observe(el));
+
+  /* ── Filter chips toggle ────────────────────────────────────── */
+  document.querySelectorAll('.filter-chips .chip').forEach(chip => {
+    chip.addEventListener('click', function() {
+      document.querySelectorAll('.filter-chips .chip').forEach(c => c.classList.remove('active'));
+      this.classList.add('active');
+    });
   });
-});
 </script>
 <script>
 document.getElementById("phone").addEventListener("input", function () {
@@ -801,43 +801,48 @@ document.getElementById("phone").addEventListener("input", function () {
 </script>
 <script>
 window.addEventListener("load", function () {
+
   const modalEl = document.getElementById("leadModal");
   const leadModal = new bootstrap.Modal(modalEl);
 
-  // Check if user already submitted form
-  let isSubmitted = localStorage.getItem("leadSubmitted");
+  let repeatTimeout;
 
-  // First open after 3 sec (only if not submitted)
-  if (!isSubmitted) {
-    setTimeout(() => {
-      leadModal.show();
-    }, 3000);
+  // Repeat countdown after modal close
+  function startRepeatCountdown() {
+    clearTimeout(repeatTimeout);
+
+    repeatTimeout = setTimeout(() => {
+      if (!localStorage.getItem("leadSubmitted")) {
+        leadModal.show();
+      }
+    }, 15000);
   }
 
-  // Repeat every 10 sec (only if not submitted)
-  setInterval(() => {
-    if (!modalEl.classList.contains("show") && !localStorage.getItem("leadSubmitted")) {
-      leadModal.show();
-    }
-  }, 10000);
+  // First popup after 10 sec
+  if (!localStorage.getItem("leadSubmitted")) {
+    setTimeout(() => {
+      if (!localStorage.getItem("leadSubmitted")) {
+        leadModal.show();
+      }
+    }, 10000);
+  }
 
-  // When modal closes → mark last close time
+  // Restart countdown after close
   modalEl.addEventListener("hidden.bs.modal", function () {
-    localStorage.setItem("lastClosed", Date.now());
+    if (!localStorage.getItem("leadSubmitted")) {
+      startRepeatCountdown();
+    }
   });
 
   // Phone validation
-  document.getElementById("modalPhone").addEventListener("input", function () {
-    this.value = this.value.replace(/\D/g, "").slice(0, 10);
-  });
+  const modalPhone = document.getElementById("modalPhone");
 
-  // Form submit hook (IMPORTANT)
-  const form = modalEl.querySelector("form");
-  if (form) {
-    form.addEventListener("submit", function () {
-      localStorage.setItem("leadSubmitted", "true");
+  if (modalPhone) {
+    modalPhone.addEventListener("input", function () {
+      this.value = this.value.replace(/\D/g, "").slice(0, 10);
     });
   }
+
 });
 </script>
 <script>
@@ -882,45 +887,57 @@ async function sendLeadToCRM(form) {
   const name = form.querySelector('[name="name"]').value;
   const email = form.querySelector('[name="email"]').value;
   const phone = form.querySelector('[name="phone"]').value;
-  try {
-    await fetch(
-      "https://farvisioncloud.com/sfasync/api/syncleads/externalapi",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-          firstName: name,
-          lastName: "",
-          email: email,
-          mobilePhone: phone,
-          comments: "",
-          originFrom: "Lead from Digital",
-          product: "Arihant World Villas",
-          campaign: "WV_Srch_BrandCam_6_5_26",
-          sourceAccountDescription: "Opelox",
-          sourceAccountType: "Agency",
-          isUpdatefromUIDate: false,
-          isImported: true,
-          DumpdataObjectId: "91241085t62268889600867",
-          tenantId: 868
-        })
-      }
-    );
-    console.log("Lead Sent To CRM");
-  }
-  catch(error) {
-    console.error("CRM Error:", error);
-  }
-}
-/* AUTO APPLY TO ALL WEB3FORMS */
-document
-.querySelectorAll('form[action="https://api.web3forms.com/submit"]')
-.forEach(form => {
-  form.addEventListener("submit", function(){
-    sendLeadToCRM(form);
+
+  await fetch("https://farvisioncloud.com/sfasync/api/syncleads/externalapi", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      firstName: name,
+      lastName: "",
+      email: email,
+      mobilePhone: phone,
+      comments: "",
+      originFrom: "Lead from Digital",
+      product: "Arihant World Villas",
+      campaign: "WV_Srch_BrandCam_6_5_26",
+      sourceAccountDescription: "Opelox",
+      sourceAccountType: "Agency",
+      isUpdatefromUIDate: false,
+      isImported: true,
+      DumpdataObjectId: "91241085t62268889600867",
+      tenantId: 868
+    })
   });
+}
+
+document.querySelectorAll('form[action="https://api.web3forms.com/submit"]').forEach(form => {
+  form.addEventListener("submit", async function(e) {
+    if (form.dataset.submitted === "true") {
+      e.preventDefault();
+      return false;
+    }
+
+    form.dataset.submitted = "true";
+
+    const btn = form.querySelector('button[type="submit"]');
+    if (btn) {
+      btn.innerText = "Submitting...";
+    }
+
+    try {
+      await sendLeadToCRM(form);
+    } catch (error) {
+      console.error("CRM Error:", error);
+    }
+  });
+});
+</script>
+<script>
+window.addEventListener("pageshow", function (event) {
+  // Browser back/forward cache detect
+  if (event.persisted || performance.getEntriesByType("navigation")[0].type === "back_forward") {
+    window.location.reload();
+  }
 });
 </script>
 </body>
